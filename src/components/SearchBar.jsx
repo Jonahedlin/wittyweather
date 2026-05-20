@@ -1,8 +1,33 @@
+/**
+ * @FileName    SearchBar.jsx
+ * @Description Renders the pinned search bar at the bottom of the side panel.
+ *              Provides a text input for city name lookup and an animated Lottie
+ *              search button. Adapts background and text colours via the isDark
+ *              prop and surfaces API error messages above the form.
+ * @Author      Jonah Ssembatya
+ * @CreationDate 05-10-2026 (MM-DD-YYYY)
+ * @LastModified 05-20-2026 (MM-DD-YYYY)
+ * @Version     1.0.0
+ * @ProjectName wittyweather
+ */
+
 import { useState } from 'react';
 import _Lottie from 'lottie-react';
 const Lottie = _Lottie.default ?? _Lottie;
 import searchAnim from '../assets/animations/search.json';
 
+/**
+ * @Name        SearchBar
+ * @Description Controlled form component that calls onSearch with the trimmed
+ *              city name on submit. Disables the submit button while a request
+ *              is in-flight or when the input is blank. Uses glassmorphism
+ *              styling that switches between light and dark variants via isDark.
+ * @Param       {Function} onSearch - Callback invoked with the city string on submit.
+ * @Param       {boolean}  loading  - Disables the submit button during an active fetch.
+ * @Param       {string|null} error - Error message to display above the form, or null.
+ * @Param       {boolean}  isDark   - Switches card and text colours for dark backgrounds.
+ * @Return      {JSX.Element} Pinned bottom search bar with animated submit button.
+ */
 export default function SearchBar({ onSearch, loading, error, isDark }) {
   const [input, setInput] = useState('');
 
