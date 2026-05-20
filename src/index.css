@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+
+/* no scroll bar displayed in side panel*/
+
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
