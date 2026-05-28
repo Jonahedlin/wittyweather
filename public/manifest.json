@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "WittyWeather",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A sleek weather Chrome extension powered by OpenWeatherMap.",
   "background": {
     "service_worker": "background.js"

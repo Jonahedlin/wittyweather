@@ -18,4 +18,18 @@ export default defineConfig([
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
   },
+  // Chrome extension service worker — needs chrome + serviceworker globals
+  {
+    files: ['public/background.js'],
+    languageOptions: {
+      globals: { ...globals.webextensions, ...globals.serviceworker },
+    },
+  },
+  // Vite config runs in Node — needs __dirname and other Node globals
+  {
+    files: ['vite.config.js'],
+    languageOptions: {
+      globals: globals.node,
+    },
+  },
 ])

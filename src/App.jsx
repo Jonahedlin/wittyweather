@@ -45,7 +45,7 @@ export default function App() {
       (pos) => fetchWeatherByCoords(pos.coords.latitude, pos.coords.longitude),
       ()    => fetchWeather('Vancouver') // denied or unavailable → fall back
     );
-  }, []);
+  }, [fetchWeather, fetchWeatherByCoords]);
 
   // Derive condition key and background theme from current weather data
   const conditionKey = weather

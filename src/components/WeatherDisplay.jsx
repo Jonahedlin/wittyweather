@@ -42,9 +42,12 @@ function useClock() {
  *                                         switches text to light colours.
  * @Return      {JSX.Element} Weather animation section with date and city info.
  */
+const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
+
 export default function WeatherDisplay({ weather, isDark }) {
   const now = useClock();
   const { name, weather: [condition], sys, dt } = weather;
+  const country = regionNames.of(sys.country) ?? sys.country;
 
   const isDay        = dt > sys.sunrise && dt < sys.sunset;
   const conditionKey = getConditionKey(condition.id, isDay);
@@ -77,8 +80,9 @@ export default function WeatherDisplay({ weather, isDark }) {
           : <span className="text-[7rem] leading-none select-none">{conditionEmoji[conditionKey]}</span>}
       </div>
 
-      {/* City name and condition label */}
+      {/* City name, country, and condition label */}
       <div className="text-center mt-2">
+        <p className={`${t2} text-sm uppercase tracking-widest font-medium`}>{country}</p>
         <h1 className={`${t2} text-4xl font-bold tracking-tight`}>{name}</h1>
         <p className={`${t1} text-base mt-1 uppercase tracking-widest font-medium`}>
           {conditionLabels[conditionKey]}
